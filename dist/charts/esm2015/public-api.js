@@ -1,0 +1,7 @@
+/*
+ * Public API Surface of ng-apexcharts
+ */
+export * from './lib/ng-apexcharts.module';
+export * from './lib/chart/chart.component';
+export * from './lib/model/apex-types';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiJDOi93b3JrL2FzZGYvbXktd29ya3NwYWNlL3Byb2plY3RzL2NoYXJ0cy9zcmMvIiwic291cmNlcyI6WyJwdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsY0FBYyw0QkFBNEIsQ0FBQztBQUMzQyxjQUFjLDZCQUE2QixDQUFDO0FBQzVDLGNBQWMsd0JBQXdCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxyXG4gKiBQdWJsaWMgQVBJIFN1cmZhY2Ugb2YgbmctYXBleGNoYXJ0c1xyXG4gKi9cclxuXHJcbmV4cG9ydCAqIGZyb20gJy4vbGliL25nLWFwZXhjaGFydHMubW9kdWxlJztcclxuZXhwb3J0ICogZnJvbSAnLi9saWIvY2hhcnQvY2hhcnQuY29tcG9uZW50JztcclxuZXhwb3J0ICogZnJvbSAnLi9saWIvbW9kZWwvYXBleC10eXBlcyc7XHJcbiJdfQ==
