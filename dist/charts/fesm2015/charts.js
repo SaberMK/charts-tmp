@@ -1,18 +1,32 @@
-import { ɵɵdefineComponent, ɵɵstaticViewQuery, ɵɵqueryRefresh, ɵɵloadQuery, ɵɵNgOnChangesFeature, ɵɵelement, ɵsetClassMetadata, Component, Input, ViewChild, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule } from '@angular/core';
+import { ɵɵdirectiveInject, PLATFORM_ID, ɵɵdefineComponent, ɵɵstaticViewQuery, ɵɵqueryRefresh, ɵɵloadQuery, ɵɵNgOnChangesFeature, ɵɵelement, ɵsetClassMetadata, Component, Inject, Input, ViewChild, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule } from '@angular/core';
 import { asapScheduler } from 'rxjs';
 import * as ApexCharts from 'apexcharts';
+import { isPlatformBrowser } from '@angular/common';
 
 const _c0 = ["chart"];
 class ChartComponent {
-    constructor() {
+    constructor(platformId) {
         this.autoUpdateSeries = true;
+        this.isBrowser = true;
+        if (isPlatformBrowser(platformId)) {
+            this.isBrowser = true;
+        }
+        if (!this.isBrowser) {
+            return;
+        }
     }
     ngOnInit() {
+        if (!this.isBrowser) {
+            return;
+        }
         asapScheduler.schedule(() => {
             this.createElement();
         });
     }
     ngOnChanges(changes) {
+        if (!this.isBrowser) {
+            return;
+        }
         asapScheduler.schedule(() => {
             if (this.autoUpdateSeries &&
                 Object.keys(changes).filter((c) => c !== "series").length === 0) {
@@ -23,11 +37,17 @@ class ChartComponent {
         });
     }
     ngOnDestroy() {
+        if (!this.isBrowser) {
+            return;
+        }
         if (this.chartObj) {
             this.chartObj.destroy();
         }
     }
     createElement() {
+        if (!this.isBrowser) {
+            return;
+        }
         const options = {};
         if (this.annotations) {
             options.annotations = this.annotations;
@@ -99,67 +119,127 @@ class ChartComponent {
         this.render();
     }
     render() {
+        if (!this.isBrowser) {
+            return;
+        }
         return this.chartObj.render();
     }
     updateOptions(options, redrawPaths, animate, updateSyncedCharts) {
+        if (!this.isBrowser) {
+            return;
+        }
         return this.chartObj.updateOptions(options, redrawPaths, animate, updateSyncedCharts);
     }
     updateSeries(newSeries, animate) {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.updateSeries(newSeries, animate);
     }
     appendSeries(newSeries, animate) {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.appendSeries(newSeries, animate);
     }
     appendData(newData) {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.appendData(newData);
     }
     toggleSeries(seriesName) {
+        if (!this.isBrowser) {
+            return;
+        }
         return this.chartObj.toggleSeries(seriesName);
     }
     showSeries(seriesName) {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.showSeries(seriesName);
     }
     hideSeries(seriesName) {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.hideSeries(seriesName);
     }
     resetSeries() {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.resetSeries();
     }
     zoomX(min, max) {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.zoomX(min, max);
     }
     toggleDataPointSelection(seriesIndex, dataPointIndex) {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.toggleDataPointSelection(seriesIndex, dataPointIndex);
     }
     destroy() {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.destroy();
     }
     setLocale(localeName) {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.setLocale(localeName);
     }
     paper() {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.paper();
     }
     addXaxisAnnotation(options, pushToMemory, context) {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.addXaxisAnnotation(options, pushToMemory, context);
     }
     addYaxisAnnotation(options, pushToMemory, context) {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.addYaxisAnnotation(options, pushToMemory, context);
     }
     addPointAnnotation(options, pushToMemory, context) {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.addPointAnnotation(options, pushToMemory, context);
     }
     removeAnnotation(id, options) {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.removeAnnotation(id, options);
     }
     clearAnnotations(options) {
+        if (!this.isBrowser) {
+            return;
+        }
         this.chartObj.clearAnnotations(options);
     }
     dataURI() {
+        if (!this.isBrowser) {
+            return;
+        }
         return this.chartObj.dataURI();
     }
 }
-ChartComponent.ɵfac = function ChartComponent_Factory(t) { return new (t || ChartComponent)(); };
+ChartComponent.ɵfac = function ChartComponent_Factory(t) { return new (t || ChartComponent)(ɵɵdirectiveInject(PLATFORM_ID)); };
 ChartComponent.ɵcmp = ɵɵdefineComponent({ type: ChartComponent, selectors: [["apx-chart"]], viewQuery: function ChartComponent_Query(rf, ctx) { if (rf & 1) {
         ɵɵstaticViewQuery(_c0, true);
     } if (rf & 2) {
@@ -175,7 +255,10 @@ ChartComponent.ɵcmp = ɵɵdefineComponent({ type: ChartComponent, selectors: [[
                 templateUrl: "./chart.component.html",
                 styleUrls: ["./chart.component.css"],
             }]
-    }], null, { chart: [{
+    }], function () { return [{ type: undefined, decorators: [{
+                type: Inject,
+                args: [PLATFORM_ID]
+            }] }]; }, { chart: [{
             type: Input
         }], annotations: [{
             type: Input

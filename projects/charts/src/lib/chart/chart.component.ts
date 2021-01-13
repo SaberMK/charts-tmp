@@ -7,6 +7,8 @@ import {
   OnDestroy,
   SimpleChanges,
   ViewChild,
+  Inject,
+  PLATFORM_ID,
 } from "@angular/core";
 import {
   ApexAnnotations,
@@ -32,6 +34,7 @@ import {
 import { asapScheduler } from "rxjs";
 
 import * as ApexCharts from "apexcharts";
+import { isPlatformBrowser } from "@angular/common";
 
 @Component({
   selector: "apx-chart",
@@ -66,13 +69,33 @@ export class ChartComponent implements OnInit, OnChanges, OnDestroy {
   @ViewChild("chart", { static: true }) private chartElement: ElementRef;
   private chartObj: any;
 
+  isBrowser: boolean = true;
+
+  constructor(@Inject(PLATFORM_ID) platformId) {
+    if(isPlatformBrowser(platformId)) {
+      this.isBrowser = true
+    }
+    if(!this.isBrowser) {
+      return;
+    }
+    
+  }
+
   ngOnInit() {
+    if(!this.isBrowser) {
+      return;
+    }
+
     asapScheduler.schedule(() => {
       this.createElement();
     });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     asapScheduler.schedule(() => {
       if (
         this.autoUpdateSeries &&
@@ -87,12 +110,20 @@ export class ChartComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy() {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     if (this.chartObj) {
       this.chartObj.destroy();
     }
   }
 
   private createElement() {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     const options: any = {};
 
     if (this.annotations) {
@@ -169,6 +200,10 @@ export class ChartComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   public render(): Promise<void> {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     return this.chartObj.render();
   }
 
@@ -178,6 +213,10 @@ export class ChartComponent implements OnInit, OnChanges, OnDestroy {
     animate?: boolean,
     updateSyncedCharts?: boolean
   ): Promise<void> {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     return this.chartObj.updateOptions(
       options,
       redrawPaths,
@@ -190,6 +229,10 @@ export class ChartComponent implements OnInit, OnChanges, OnDestroy {
     newSeries: ApexAxisChartSeries | ApexNonAxisChartSeries,
     animate?: boolean
   ) {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.updateSeries(newSeries, animate);
   }
 
@@ -197,30 +240,58 @@ export class ChartComponent implements OnInit, OnChanges, OnDestroy {
     newSeries: ApexAxisChartSeries | ApexNonAxisChartSeries,
     animate?: boolean
   ) {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.appendSeries(newSeries, animate);
   }
 
   public appendData(newData: any[]) {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.appendData(newData);
   }
 
   public toggleSeries(seriesName: string): any {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     return this.chartObj.toggleSeries(seriesName);
   }
 
   public showSeries(seriesName: string) {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.showSeries(seriesName);
   }
 
   public hideSeries(seriesName: string) {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.hideSeries(seriesName);
   }
 
   public resetSeries() {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.resetSeries();
   }
 
   public zoomX(min: number, max: number) {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.zoomX(min, max);
   }
 
@@ -228,18 +299,34 @@ export class ChartComponent implements OnInit, OnChanges, OnDestroy {
     seriesIndex: number,
     dataPointIndex?: number
   ) {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.toggleDataPointSelection(seriesIndex, dataPointIndex);
   }
 
   public destroy() {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.destroy();
   }
 
   public setLocale(localeName?: string) {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.setLocale(localeName);
   }
 
   public paper() {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.paper();
   }
 
@@ -248,6 +335,10 @@ export class ChartComponent implements OnInit, OnChanges, OnDestroy {
     pushToMemory?: boolean,
     context?: any
   ) {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.addXaxisAnnotation(options, pushToMemory, context);
   }
 
@@ -256,6 +347,10 @@ export class ChartComponent implements OnInit, OnChanges, OnDestroy {
     pushToMemory?: boolean,
     context?: any
   ) {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.addYaxisAnnotation(options, pushToMemory, context);
   }
 
@@ -264,18 +359,34 @@ export class ChartComponent implements OnInit, OnChanges, OnDestroy {
     pushToMemory?: boolean,
     context?: any
   ) {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.addPointAnnotation(options, pushToMemory, context);
   }
 
   public removeAnnotation(id: string, options?: any) {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.removeAnnotation(id, options);
   }
 
   public clearAnnotations(options?: any) {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     this.chartObj.clearAnnotations(options);
   }
 
   public dataURI(): Promise<void> {
+    if(!this.isBrowser) {
+      return;
+    }
+    
     return this.chartObj.dataURI();
   }
 }

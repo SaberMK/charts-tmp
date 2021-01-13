@@ -26,6 +26,8 @@ export declare class ChartComponent implements OnInit, OnChanges, OnDestroy {
     autoUpdateSeries: boolean;
     private chartElement;
     private chartObj;
+    isBrowser: boolean;
+    constructor(platformId: any);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;
