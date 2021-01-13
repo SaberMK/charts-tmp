@@ -1,7 +1,8 @@
-import { Component, Input, ViewChild, NgModule } from '@angular/core';
+import { ɵɵdefineComponent, ɵɵstaticViewQuery, ɵɵqueryRefresh, ɵɵloadQuery, ɵɵNgOnChangesFeature, ɵɵelement, ɵsetClassMetadata, Component, Input, ViewChild, ɵɵdefineNgModule, ɵɵdefineInjector, ɵɵsetNgModuleScope, NgModule } from '@angular/core';
 import { asapScheduler } from 'rxjs';
 import * as ApexCharts from 'apexcharts';
 
+const _c0 = ["chart"];
 class ChartComponent {
     constructor() {
         this.autoUpdateSeries = true;
@@ -158,38 +159,70 @@ class ChartComponent {
         return this.chartObj.dataURI();
     }
 }
-ChartComponent.decorators = [
-    { type: Component, args: [{
+ChartComponent.ɵfac = function ChartComponent_Factory(t) { return new (t || ChartComponent)(); };
+ChartComponent.ɵcmp = ɵɵdefineComponent({ type: ChartComponent, selectors: [["apx-chart"]], viewQuery: function ChartComponent_Query(rf, ctx) { if (rf & 1) {
+        ɵɵstaticViewQuery(_c0, true);
+    } if (rf & 2) {
+        var _t;
+        ɵɵqueryRefresh(_t = ɵɵloadQuery()) && (ctx.chartElement = _t.first);
+    } }, inputs: { chart: "chart", annotations: "annotations", colors: "colors", dataLabels: "dataLabels", series: "series", stroke: "stroke", labels: "labels", legend: "legend", markers: "markers", noData: "noData", fill: "fill", tooltip: "tooltip", plotOptions: "plotOptions", responsive: "responsive", xaxis: "xaxis", yaxis: "yaxis", grid: "grid", states: "states", title: "title", subtitle: "subtitle", theme: "theme", autoUpdateSeries: "autoUpdateSeries" }, features: [ɵɵNgOnChangesFeature], decls: 2, vars: 0, consts: [["chart", ""]], template: function ChartComponent_Template(rf, ctx) { if (rf & 1) {
+        ɵɵelement(0, "div", null, 0);
+    } }, styles: [""] });
+/*@__PURE__*/ (function () { ɵsetClassMetadata(ChartComponent, [{
+        type: Component,
+        args: [{
                 selector: "apx-chart",
-                template: "<div #chart></div>\r\n",
-                styles: [""]
-            },] }
-];
-ChartComponent.propDecorators = {
-    chart: [{ type: Input }],
-    annotations: [{ type: Input }],
-    colors: [{ type: Input }],
-    dataLabels: [{ type: Input }],
-    series: [{ type: Input }],
-    stroke: [{ type: Input }],
-    labels: [{ type: Input }],
-    legend: [{ type: Input }],
-    markers: [{ type: Input }],
-    noData: [{ type: Input }],
-    fill: [{ type: Input }],
-    tooltip: [{ type: Input }],
-    plotOptions: [{ type: Input }],
-    responsive: [{ type: Input }],
-    xaxis: [{ type: Input }],
-    yaxis: [{ type: Input }],
-    grid: [{ type: Input }],
-    states: [{ type: Input }],
-    title: [{ type: Input }],
-    subtitle: [{ type: Input }],
-    theme: [{ type: Input }],
-    autoUpdateSeries: [{ type: Input }],
-    chartElement: [{ type: ViewChild, args: ["chart", { static: true },] }]
-};
+                templateUrl: "./chart.component.html",
+                styleUrls: ["./chart.component.css"],
+            }]
+    }], null, { chart: [{
+            type: Input
+        }], annotations: [{
+            type: Input
+        }], colors: [{
+            type: Input
+        }], dataLabels: [{
+            type: Input
+        }], series: [{
+            type: Input
+        }], stroke: [{
+            type: Input
+        }], labels: [{
+            type: Input
+        }], legend: [{
+            type: Input
+        }], markers: [{
+            type: Input
+        }], noData: [{
+            type: Input
+        }], fill: [{
+            type: Input
+        }], tooltip: [{
+            type: Input
+        }], plotOptions: [{
+            type: Input
+        }], responsive: [{
+            type: Input
+        }], xaxis: [{
+            type: Input
+        }], yaxis: [{
+            type: Input
+        }], grid: [{
+            type: Input
+        }], states: [{
+            type: Input
+        }], title: [{
+            type: Input
+        }], subtitle: [{
+            type: Input
+        }], theme: [{
+            type: Input
+        }], autoUpdateSeries: [{
+            type: Input
+        }], chartElement: [{
+            type: ViewChild,
+            args: ["chart", { static: true }]
+        }] }); })();
 
 if (window) {
     window.ApexCharts = ApexCharts;
@@ -197,13 +230,17 @@ if (window) {
 const declerations = [ChartComponent];
 class NgApexchartsModule {
 }
-NgApexchartsModule.decorators = [
-    { type: NgModule, args: [{
+NgApexchartsModule.ɵmod = ɵɵdefineNgModule({ type: NgApexchartsModule });
+NgApexchartsModule.ɵinj = ɵɵdefineInjector({ factory: function NgApexchartsModule_Factory(t) { return new (t || NgApexchartsModule)(); }, imports: [[]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && ɵɵsetNgModuleScope(NgApexchartsModule, { declarations: [ChartComponent], exports: [ChartComponent] }); })();
+/*@__PURE__*/ (function () { ɵsetClassMetadata(NgApexchartsModule, [{
+        type: NgModule,
+        args: [{
                 declarations: [...declerations],
                 imports: [],
                 exports: [...declerations],
-            },] }
-];
+            }]
+    }], null, null); })();
 
 // export declare class ApexCharts {
 

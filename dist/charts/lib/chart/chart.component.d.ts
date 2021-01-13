@@ -1,5 +1,6 @@
 import { OnChanges, OnInit, OnDestroy, SimpleChanges } from "@angular/core";
 import { ApexAnnotations, ApexAxisChartSeries, ApexChart, ApexDataLabels, ApexFill, ApexGrid, ApexLegend, ApexNonAxisChartSeries, ApexMarkers, ApexNoData, ApexPlotOptions, ApexResponsive, ApexStates, ApexStroke, ApexTheme, ApexTitleSubtitle, ApexTooltip, ApexXAxis, ApexYAxis } from "../model/apex-types";
+import * as i0 from "@angular/core";
 export declare class ChartComponent implements OnInit, OnChanges, OnDestroy {
     chart: ApexChart;
     annotations: ApexAnnotations;
@@ -49,4 +50,7 @@ export declare class ChartComponent implements OnInit, OnChanges, OnDestroy {
     removeAnnotation(id: string, options?: any): void;
     clearAnnotations(options?: any): void;
     dataURI(): Promise<void>;
+    static ɵfac: i0.ɵɵFactoryDef<ChartComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDefWithMeta<ChartComponent, "apx-chart", never, { "chart": "chart"; "annotations": "annotations"; "colors": "colors"; "dataLabels": "dataLabels"; "series": "series"; "stroke": "stroke"; "labels": "labels"; "legend": "legend"; "markers": "markers"; "noData": "noData"; "fill": "fill"; "tooltip": "tooltip"; "plotOptions": "plotOptions"; "responsive": "responsive"; "xaxis": "xaxis"; "yaxis": "yaxis"; "grid": "grid"; "states": "states"; "title": "title"; "subtitle": "subtitle"; "theme": "theme"; "autoUpdateSeries": "autoUpdateSeries"; }, {}, never, never>;
 }
+//# sourceMappingURL=chart.component.d.ts.map

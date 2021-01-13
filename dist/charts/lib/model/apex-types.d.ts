@@ -1023,3 +1023,4 @@ export interface ApexNoData {
 }
 export declare type ChartType = "line" | "area" | "bar" | "histogram" | "pie" | "donut" | "radialBar" | "scatter" | "bubble" | "heatmap" | "candlestick" | "radar" | "polarArea" | "rangeBar" | "treemap";
 export {};
+//# sourceMappingURL=apex-types.d.ts.map
